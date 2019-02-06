@@ -1,4 +1,4 @@
-// Initiale configuration
+// Initial configuration
 mapboxgl.accessToken = 'pk.eyJ1IjoibWMxMDBzIiwiYSI6ImNqb2E2ZTF3ODBxa3czd2xldHp1Z2FxbGYifQ.U4oatm5RsTXXHQLz5w66dQ';
 var map = new mapboxgl.Map({
   container: 'map',
@@ -27,4 +27,20 @@ if (navigator.geolocation) {
       .setLngLat([lng,lat])
       .addTo(map)
   })
+}
+
+let coordinates = [
+  {lng: -3.7004502,lat:40.3925362}, // Madrid
+  {lng: 2.3354096,lat:48.8744289}, // Paris
+  {lng: 2.1881167,lat:41.3977391}, // Barcelona
+]
+var ironhackMarkers = []
+
+for (let i = 0; i < coordinates.length; i++) {
+  let newMarker = new mapboxgl.Marker({
+    color: '#32c3ff'
+  })
+    .setLngLat([coordinates[i].lng,coordinates[i].lat])
+    .addTo(map)
+  ironhackMarkers.push(newMarker)
 }
